@@ -5,3 +5,5 @@
 /app/logs/*
 /vendor/
 /bin/
+tags
+/nbproject/
