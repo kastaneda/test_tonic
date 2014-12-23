@@ -1,0 +1,11 @@
+services:
+    dk_user.registration.form.type:
+        class: DK\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: dk_user_registration }
+    dk_user.profile.form.type:
+        class: DK\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: dk_user_profile }

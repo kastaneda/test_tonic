@@ -9,6 +9,15 @@
 
           <dt>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}</dt>
           <dd>{{ user.email }}</dd>
+
+          <dt>First name:</dt>
+          <dd>{{ user.nameFirst }}</dd>
+
+          <dt>Last name:</dt>
+          <dd>{{ user.nameLast }}</dd>
+
+          <dt>Referral code:</dt>
+          <dd>{{ user.refCode }}</dd>
         </dl>
     </div>
 </div>
