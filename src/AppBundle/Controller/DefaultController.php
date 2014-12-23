@@ -17,9 +17,13 @@ class DefaultController extends Controller
     }
 
     public function refCodeAction(Request $request) {
+        // OK, it works.
+        //return $this->redirect($request->getBaseUrl() . '/' . $request->attributes->get('redirectNext'));
+
         return $this->render('AppBundle::refcode.html.twig', [
-        'refcode' => $request->query->get('refcode'),
-        'redirectNext' => $request->attributes->get('redirectNext'),
+                    'refcode' => $request->query->get('refcode'),
+                    'redirectNext' => $request->attributes->get('redirectNext'),
+                    'baseURL' => $request->getBaseUrl(),
         ]);
     }
 
