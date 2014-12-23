@@ -55,6 +55,10 @@ class User extends BaseUser
         $this->refCode = self::generateRandomRefCode();
     }
 
+    public function getId() {
+        return $this->id;
+    }
+
     public function getNameFirst() {
         return $this->nameFirst;
     }

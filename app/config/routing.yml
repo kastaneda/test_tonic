@@ -1,6 +1,6 @@
 refcode:
     path:   /{redirectNext}
-    defaults:  { _controller: AppBundle:Default:refCode }
+    defaults:  { _controller: UserBundle:Refcode:refHit }
     condition: "request.query.has('refcode')"
     requirements:
         redirectNext: .*

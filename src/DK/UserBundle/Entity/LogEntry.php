@@ -24,22 +24,26 @@ class LogEntry
     protected $refCode;
 
     /**
-     * @ORM\Column(type="string", name="referrer")
+     * @ORM\Column(type="string", name="referrer", nullable=true)
      */
     protected $referrer;
 
     /**
-     * @ORM\Column(type="string", name="ip")
+     * @ORM\Column(type="string", name="ip", nullable=true)
      */
     protected $IP;
 
     /**
-     * @ORM\Column(type="string", name="dt")
+     * @ORM\Column(type="datetime", name="dt")
      */
     protected $dateTime;
-    
+
     public function __construct() {
         $this->dateTime = new \DateTime;
+    }
+
+    public function getId() {
+        return $this->id;
     }
 
     public function getRefCode() {
