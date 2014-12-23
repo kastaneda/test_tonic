@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Страница для отладки</h1>
+    <p>Типа вот щас мы поймали какой-то refcode, сохраним его куда надо (в базу и в куки) а потом пойдём на ту же самую страницу, только без ?refcode в конце.</p>
+    <ul>
+        <li>refcode = {{ refcode }}</li>
+        <li>redirectNext = {{ redirectNext }}</li>
+        <li>baseURL = {{ app.request.getBaseURL() }}</li>
+    </ul>
+
+{% endblock %}
