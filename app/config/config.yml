@@ -84,6 +84,7 @@ fos_user:
             enabled: true
         form:
             type: dk_user_registration
+            handler: dk_user.form.handler.registration
     profile:
         form:
             type: dk_user_profile

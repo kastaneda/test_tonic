@@ -43,8 +43,8 @@ class User extends BaseUser
     protected $refCode;
 
     /**
-     * @ORM\Column(name="master_hit", nullable=true)
-     * @ORM\ManyToOne(targetEntity="LogEntry")
+     * @ORM\Column(type="integer", name="master_hit", nullable=true)
+     * To be done: ORM\ManyToOne(targetEntity="LogEntry")
      */
     protected $masterHit;
 
@@ -87,7 +87,7 @@ class User extends BaseUser
         return $this->masterHit;
     }
 
-    public function setMasterHit(LogEntry $hit) {
+    public function setMasterHit($hit) {
         return $this->masterHit = $hit;
     }
 
