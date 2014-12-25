@@ -16,4 +16,8 @@ install: composer.phar
 composer.phar:
 	wget http://getcomposer.org/installer -O - | php
 
-.PHONY: all pull upload install install-ssh
+report:
+	bin/phploc src/
+	bin/phpmd src/ text codesize,unusedcode,design,naming
+
+.PHONY: all pull upload install install-ssh report
