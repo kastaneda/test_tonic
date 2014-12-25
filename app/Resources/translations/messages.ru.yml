@@ -1,0 +1,9 @@
+
+app:
+    title:              "Тестовое задание"
+    menu:
+        source_code:    "Исходный код"
+        issues:         "Баг-трекер"
+
+misc:
+    toggle_navigation:  "Переключить навигацию"

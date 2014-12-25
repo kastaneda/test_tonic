@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Cookie;
 use DK\UserBundle\Entity\LogEntry;
 
-class RefcodeController extends Controller
+class RefCodeController extends Controller
 {
 
     const cookieExpiration = 'now +1 week'; // strtotime() format

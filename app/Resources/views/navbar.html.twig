@@ -2,13 +2,17 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">{{ 'misc.toggle_navigation'|trans }}</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('homepage') }}">Тестовое задание</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}">{{ 'app.title'|trans }}</a>
         </div>
+        <ul class="nav navbar-nav">
+            <li><a href="https://github.com/kastaneda/tonic_test">{{ 'app.menu.source_code'|trans }}</a></li>
+            <li><a href="https://github.com/kastaneda/tonic_test/issues">{{ 'app.menu.issues'|trans }}</a></li>
+        </ul>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             {% include 'UserBundle::navbar-profile.html.twig' %}
         {% else %}

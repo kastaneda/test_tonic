@@ -6,3 +6,75 @@
 .rigth-top-logout-button {
     padding-right: 15px;
 }
+
+.text-like-link {
+    color: blue;
+    text-decoration: underline;
+}
+
+#typed-cursor {
+    color: black;
+    font-weight: bold;
+}
+
+#typed-cursor.blinking {
+    animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+    from,to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+body.specification {
+    background: #f0f0f0;
+}
+
+div.specification {
+    font-size: 16px;
+    margin: 50px auto;
+    padding: 100px 100px 250px 100px;
+    max-width: 50em;
+    background: white;
+    border: 1px solid #c1c1c1;
+    box-shadow: 0 0 5px #b1b1b1;
+    position: relative;
+}
+
+div.specification .spec-edge {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+}
+
+div.specification .spec-edge1 {
+    left: 84px;
+    top: 84px;
+    border-right: thin solid #c0c0c0;
+    border-bottom: thin solid #c0c0c0;
+}
+
+div.specification .spec-edge2 {
+    right: 84px;
+    top: 84px;
+    border-left: thin solid #c0c0c0;
+    border-bottom: thin solid #c0c0c0;
+}
+
+div.specification .spec-edge3 {
+    left: 84px;
+    bottom: 84px;
+    border-right: thin solid #c0c0c0;
+    border-top: thin solid #c0c0c0;
+}
+
+div.specification .spec-edge4 {
+    right: 84px;
+    bottom: 84px;
+    border-left: thin solid #c0c0c0;
+    border-top: thin solid #c0c0c0;
+}
