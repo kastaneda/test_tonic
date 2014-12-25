@@ -2,6 +2,7 @@
 app:
     title:              "Тестовое задание"
     menu:
+        register:       "Регистрация"
         source_code:    "Исходный код"
         issues:         "Баг-трекер"
 

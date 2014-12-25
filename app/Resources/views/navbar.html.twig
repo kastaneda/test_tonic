@@ -10,6 +10,9 @@
             <a class="navbar-brand" href="{{ path('homepage') }}">{{ 'app.title'|trans }}</a>
         </div>
         <ul class="nav navbar-nav">
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li><a href="{{ path('fos_user_registration_register') }}">{{ 'app.menu.register'|trans }}</a></li>
+            {% endif %}
             <li><a href="https://github.com/kastaneda/tonic_test">{{ 'app.menu.source_code'|trans }}</a></li>
             <li><a href="https://github.com/kastaneda/tonic_test/issues">{{ 'app.menu.issues'|trans }}</a></li>
         </ul>
