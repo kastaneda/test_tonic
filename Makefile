@@ -18,6 +18,7 @@ composer.phar:
 
 report:
 	bin/phploc src/
-	bin/phpmd src/ text codesize,unusedcode,design,naming
+	bin/phpcpd src/
+	bin/phpmd src/ text phpmd-rules.xml
 
 .PHONY: all pull upload install install-ssh report

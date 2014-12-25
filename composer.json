@@ -23,7 +23,8 @@
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
         "phpmd/phpmd" : "@stable",
-        "phploc/phploc": "*"
+        "phploc/phploc": "*",
+        "sebastian/phpcpd": "*"
     },
     "scripts": {
         "post-root-package-install": [

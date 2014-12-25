@@ -13,8 +13,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User extends BaseUser
 {
 
-    const refCodeChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const refCodeLength = 6;
+    const REFCODE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const REFCODE_LENGTH = 6;
 
     /**
      * @ORM\Id
@@ -93,8 +93,8 @@ class User extends BaseUser
 
     public static function generateRandomRefCode() {
         $code = '';
-        $chars = self::refCodeChars;
-        for ($i = 0; $i < self::refCodeLength; $i++) {
+        $chars = self::REFCODE_CHARS;
+        for ($i = 0; $i < self::REFCODE_LENGTH; $i++) {
             $code .= $chars[mt_rand(0, strlen($chars) - 1)];
         }
         return $code;

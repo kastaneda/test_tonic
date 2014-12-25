@@ -31,7 +31,7 @@ class LogEntry
     /**
      * @ORM\Column(type="string", name="ip", nullable=true)
      */
-    protected $IP;
+    protected $ipAddress;
 
     /**
      * @ORM\Column(type="datetime", name="dt")
@@ -63,19 +63,19 @@ class LogEntry
     }
 
     public function getIP() {
-        return $this->IP;
+        return $this->ipAddress;
     }
 
-    public function setIP($ip) {
-        $this->IP = $ip;
+    public function setIP($ipAddress) {
+        $this->ipAddress = $ipAddress;
     }
 
     public function getDateTime() {
         return $this->dateTime;
     }
 
-    public function setDateTime(\DateTime $dt) {
-        return $this->dateTime = $dt;
+    public function setDateTime(\DateTime $dateTime) {
+        return $this->dateTime = $dateTime;
     }
 
 }
