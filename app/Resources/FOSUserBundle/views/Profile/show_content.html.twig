@@ -13,7 +13,7 @@
     <dd>{{ user.refCode }}</dd>
 </dl>
 
-<ul>
-    <li><a href="{{ path('fos_user_profile_edit') }}">/profile/edit</a></li>
-    <li><a href="{{ path('fos_user_change_password') }}">/profile/change-password</a></li>
-</ul>
+<p>
+    <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-default">{{ 'profile.btn.edit'|trans({}, 'UserBundle') }}</a>
+    <a href="{{ path('fos_user_change_password') }}" class="btn btn-default">{{ 'profile.btn.password'|trans({}, 'UserBundle') }}</a>
+</p>
