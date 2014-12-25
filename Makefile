@@ -4,7 +4,7 @@ pull:
 	git pull
 
 upload:
-	rsync -avC . tonic@rico:/var/www/tonic-test.de.co.ua
+	rsync -avC --exclude=app/config/parameters.yml . tonic@rico:/var/www/tonic-test.de.co.ua
 
 install-ssh:
 	ssh tonic@rico "cd /var/www/tonic-test.de.co.ua; make install"
