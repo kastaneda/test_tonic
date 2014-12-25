@@ -1,0 +1,13 @@
+
+<ul class="nav navbar-nav navbar-right">
+    <li>
+        <p class="navbar-text">
+            {{ 'layout.logged_in_as'|trans({'%username%': '<span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="' ~ path('fos_user_profile_show') ~ '">' ~ app.user.username ~ '</a>'}, 'FOSUserBundle')|raw }}
+        </p>
+    </li>
+    <li>
+        <p class="navbar-btn rigth-top-logout-button">
+            <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+        </p>
+    </li>
+</ul>

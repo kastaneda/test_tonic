@@ -1,0 +1,6 @@
+
+security:
+    navbar_login:
+        username:   "Имя пользователя"
+        password:   "Пароль"
+        submit:     "Войти"
