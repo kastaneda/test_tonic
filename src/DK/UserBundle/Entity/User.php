@@ -12,7 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User extends BaseUser
 {
-
     const REFCODE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const REFCODE_LENGTH = 6;
 
@@ -48,50 +47,61 @@ class User extends BaseUser
      */
     protected $masterHit;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
 
         // FIXME: это надо переписать для исключения риска коллизий
         $this->refCode = self::generateRandomRefCode();
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getNameFirst() {
+    public function getNameFirst()
+    {
         return $this->nameFirst;
     }
 
-    public function setNameFirst($name) {
+    public function setNameFirst($name)
+    {
         return $this->nameFirst = $name;
     }
 
-    public function getNameLast() {
+    public function getNameLast()
+    {
         return $this->nameLast;
     }
 
-    public function setNameLast($name) {
+    public function setNameLast($name)
+    {
         return $this->nameLast = $name;
     }
 
-    public function getRefCode() {
+    public function getRefCode()
+    {
         return $this->refCode;
     }
 
-    public function setRefCode($refCode) {
+    public function setRefCode($refCode)
+    {
         return $this->refCode = $refCode;
     }
 
-    public function getMasterHit() {
+    public function getMasterHit()
+    {
         return $this->masterHit;
     }
 
-    public function setMasterHit($hit) {
+    public function setMasterHit($hit)
+    {
         return $this->masterHit = $hit;
     }
 
-    public static function generateRandomRefCode() {
+    public static function generateRandomRefCode()
+    {
         $code = '';
         $chars = self::REFCODE_CHARS;
         for ($i = 0; $i < self::REFCODE_LENGTH; $i++) {
@@ -99,5 +109,4 @@ class User extends BaseUser
         }
         return $code;
     }
-
 }

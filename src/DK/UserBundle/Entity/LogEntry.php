@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class LogEntry
 {
-
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -38,44 +37,53 @@ class LogEntry
      */
     protected $dateTime;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->dateTime = new \DateTime;
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getRefCode() {
+    public function getRefCode()
+    {
         return $this->refCode;
     }
 
-    public function setRefCode($code) {
+    public function setRefCode($code)
+    {
         $this->refCode = $code;
     }
 
-    public function getReferrer() {
+    public function getReferrer()
+    {
         return $this->referrer;
     }
 
-    public function setReferrer($referrer) {
+    public function setReferrer($referrer)
+    {
         $this->referrer = $referrer;
     }
 
-    public function getIP() {
+    public function getIP()
+    {
         return $this->ipAddress;
     }
 
-    public function setIP($ipAddress) {
+    public function setIP($ipAddress)
+    {
         $this->ipAddress = $ipAddress;
     }
 
-    public function getDateTime() {
+    public function getDateTime()
+    {
         return $this->dateTime;
     }
 
-    public function setDateTime(\DateTime $dateTime) {
+    public function setDateTime(\DateTime $dateTime)
+    {
         return $this->dateTime = $dateTime;
     }
-
 }

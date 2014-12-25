@@ -21,4 +21,7 @@ report:
 	bin/phpcpd src/
 	bin/phpmd src/ text phpmd-rules.xml
 
-.PHONY: all pull upload install install-ssh report
+cs-fix:
+	bin/php-cs-fixer fix src/ --level=psr2
+
+.PHONY: all pull upload install install-ssh report cs-fix

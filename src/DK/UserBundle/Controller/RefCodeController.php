@@ -9,10 +9,10 @@ use DK\UserBundle\Entity\LogEntry;
 
 class RefCodeController extends Controller
 {
-
     const COOKIE_EXPIRATION = 'now +1 week'; // strtotime() format
 
-    public function refHitAction(Request $request) {
+    public function refHitAction(Request $request)
+    {
         $log = new LogEntry;
         $log->setRefCode($request->query->get('refcode'));
         $log->setReferrer($request->server->get('HTTP_REFERER'));
@@ -30,5 +30,4 @@ class RefCodeController extends Controller
 
         return $response;
     }
-
 }

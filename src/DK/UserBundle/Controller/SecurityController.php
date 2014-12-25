@@ -8,11 +8,11 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class SecurityController extends BaseController
 {
-
     /**
      * For embedding from layout template
      */
-    public function navbarLoginAction(Request $request) {
+    public function navbarLoginAction(Request $request)
+    {
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
 
@@ -24,5 +24,4 @@ class SecurityController extends BaseController
                     'csrf_token' => $csrfToken,
         ]);
     }
-
 }

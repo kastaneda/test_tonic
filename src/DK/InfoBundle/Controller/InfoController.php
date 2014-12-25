@@ -7,12 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class InfoController extends Controller
 {
-
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         return $this->render('InfoBundle::index.html.twig');
     }
-
 }
