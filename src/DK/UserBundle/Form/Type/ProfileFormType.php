@@ -11,8 +11,8 @@ class ProfileFormType extends BaseType
     public function buildForm(FormBuilderInterface $builder, array $options) {
         parent::buildForm($builder, $options);
 
-        $builder->add('nameFirst', 'text', ['label' => 'First name:']);
-        $builder->add('nameLast', 'text', ['label' => 'Last name:']);
+        $builder->add('nameFirst', 'text', ['label' => 'form.name_first', 'translation_domain' => 'UserBundle']);
+        $builder->add('nameLast', 'text', ['label' => 'form.name_last', 'translation_domain' => 'UserBundle']);
     }
 
     public function getName() {

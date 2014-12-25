@@ -4,3 +4,22 @@ security:
         username:   "Имя пользователя"
         password:   "Пароль"
         submit:     "Войти"
+
+form:
+    name_first:     "Имя:"
+    name_last:      "Фамилия:"
+
+profile:
+    show:
+        full_name:  "Полное имя"
+        ref_code:   "Реферальный код"
+
+pages:
+    register:
+        title:      "Регистрация"
+    profile_show:
+        title:      "Ваш профиль"
+    profile_edit:
+        title:      "Редактирование профиля"
+    change_password:
+        title:      "Смена пароля"

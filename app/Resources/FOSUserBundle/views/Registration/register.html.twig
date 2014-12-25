@@ -1,0 +1,14 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title %}{{ 'pages.register.title'|trans({}, 'UserBundle') }} - {{ parent() }}{% endblock %}
+
+{% block fos_user_content %}
+
+    <h1>{{ 'pages.register.title'|trans({}, 'UserBundle') }}</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+        </div>
+    </div>
+
+{% endblock fos_user_content %}
