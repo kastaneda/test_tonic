@@ -78,3 +78,13 @@ div.specification .spec-edge4 {
     border-left: thin solid #c0c0c0;
     border-top: thin solid #c0c0c0;
 }
+
+@media (max-width: 600px) {
+    div.specification {
+        padding: 30px 30px 80px 30px;
+    }
+
+    div.specification .spec-edge {
+        display: none;
+    }
+}
