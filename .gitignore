@@ -10,3 +10,4 @@ tags
 /_build*
 /build/
 /composer.phar
+/.idea/
