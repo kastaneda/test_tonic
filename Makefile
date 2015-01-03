@@ -12,6 +12,7 @@ install-ssh:
 install: composer.phar
 	./composer.phar install
 	app/console cache:clear --env=prod
+	app/console doctrine:migrations:migrate
 
 composer.phar:
 	wget http://getcomposer.org/installer -O - | php
