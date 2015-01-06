@@ -6,19 +6,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Cookie;
 use DK\UserBundle\Entity\LogEntry;
+use Doctrine\ORM\EntityManager;
 
 class RefCodeController extends Controller
 {
     const COOKIE_EXPIRATION = 'now +1 week'; // strtotime() format
 
-    public function refHitAction(Request $request)
+    public function refCodeHitAction(Request $request)
     {
         $log = new LogEntry;
-        $log->setRefCode($request->query->get('refcode'));
         $log->setReferrer($request->server->get('HTTP_REFERER'));
         $log->setIP($request->server->get('REMOTE_ADDR'));
 
+        $refCode = $request->query->get('ref');
+        $log->setRefCode($refCode);
+
+        /** @var $em EntityManager */
         $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('DK\\UserBundle\\Entity\\User');
+        $user = $repo->findOneBy(['refCode' => $refCode]);
+        if ($user) {
+            $log->setRefUser($user);
+        }
+
         $em->persist($log);
         $em->flush();
 

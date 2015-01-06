@@ -18,6 +18,12 @@ class LogEntry
     protected $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $refUser;
+
+    /**
      * @ORM\Column(type="string", name="ref_code")
      */
     protected $refCode;
@@ -45,6 +51,16 @@ class LogEntry
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getRefUser()
+    {
+        return $this->refUser;
+    }
+
+    public function setRefUser(User $user)
+    {
+        $this->refUser = $user;
     }
 
     public function getRefCode()
