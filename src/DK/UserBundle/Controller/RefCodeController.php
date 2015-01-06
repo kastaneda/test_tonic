@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManager;
 class RefCodeController extends Controller
 {
     const COOKIE_EXPIRATION = 'now +1 week'; // strtotime() format
+    const COOKIE_NAME = 'refhit';
 
     public function refCodeHitAction(Request $request)
     {
@@ -35,7 +36,7 @@ class RefCodeController extends Controller
         $exitUrl = $request->getBaseUrl() . '/' . $request->attributes->get('redirectNext');
         $response = $this->redirect($exitUrl);
 
-        $cookie = new Cookie('refhit', $log->getId(), self::COOKIE_EXPIRATION);
+        $cookie = new Cookie(self::COOKIE_NAME, $log->getId(), self::COOKIE_EXPIRATION);
         $response->headers->setCookie($cookie);
 
         return $response;

@@ -79,6 +79,8 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: DK\UserBundle\Entity\User
+    service:
+        user_manager: dk_user_manager
     registration:
         confirmation:
             enabled: true

@@ -42,10 +42,21 @@ class User extends BaseUser
     protected $refCode;
 
     /**
-     * @ORM\Column(type="integer", name="master_hit", nullable=true)
-     * To be done: ORM\ManyToOne(targetEntity="LogEntry")
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="referrer_id", referencedColumnName="id")
      */
-    protected $masterHit;
+    protected $referrer;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="LogEntry")
+     * @ORM\JoinColumn(name="hit_id", referencedColumnName="id")
+     */
+    protected $refHit;
+
+    /**
+     * @var string
+     */
+    protected $refHitCookie = null;
 
     public function __construct()
     {
@@ -90,14 +101,34 @@ class User extends BaseUser
         return $this->refCode = $refCode;
     }
 
-    public function getMasterHit()
+    public function getReferrer()
     {
-        return $this->masterHit;
+        return $this->referrer;
     }
 
-    public function setMasterHit($hit)
+    public function setReferrer(User $referrer)
     {
-        return $this->masterHit = $hit;
+        return $this->referrer = $referrer;
+    }
+
+    public function getRefHit()
+    {
+        return $this->refHit;
+    }
+
+    public function setRefHit(LogEntry $hit)
+    {
+        return $this->refHit = $hit;
+    }
+
+    public function getRefHitCookie()
+    {
+        return $this->refHitCookie;
+    }
+
+    public function setRefHitCookie($cookie)
+    {
+        return $this->refHitCookie = $cookie;
     }
 
     public static function generateRandomRefCode()

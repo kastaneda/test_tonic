@@ -11,6 +11,20 @@ services:
             - { name: form.type, alias: dk_user_profile }
     dk_user.form.handler.registration:
         class: DK\UserBundle\Form\Handler\RegistrationFormHandler
-        arguments: ["@fos_user.registration.form", "@request", "@fos_user.user_manager", "@fos_user.mailer", "@fos_user.util.token_generator"]
+        arguments:
+            - @fos_user.registration.form
+            - @request
+            - @fos_user.user_manager
+            - @fos_user.mailer
+            - @fos_user.util.token_generator
         scope: request
+        public: false
+    dk_user_manager:
+        class: DK\UserBundle\Doctrine\UserManager
+        arguments:
+            - @security.encoder_factory
+            - @fos_user.util.username_canonicalizer
+            - @fos_user.util.email_canonicalizer
+            - @fos_user.entity_manager
+            - %fos_user.model.user.class%
         public: false
