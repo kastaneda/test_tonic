@@ -17,6 +17,6 @@ then
   then
     touch $FLAG_LOCK
     rm $FLAG_START
-    make && rm $FLAG_LOCK
+    make pull upload install-ssh && rm $FLAG_LOCK
   fi
 fi

@@ -1,4 +1,4 @@
-all: pull upload install-ssh
+all:
 
 pull:
 	git pull
