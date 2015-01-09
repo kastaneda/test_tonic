@@ -3,6 +3,7 @@
 /app/bootstrap.php.cache
 /app/cache/*
 /app/logs/*
+/app/*.sqlite3
 /vendor/
 /bin/
 tags
