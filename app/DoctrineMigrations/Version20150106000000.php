@@ -9,9 +9,14 @@ class Version20150106000000 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
+        $autoIncrement = '';
+        if ($this->connection->getDatabasePlatform()->getName() == 'mysql') {
+            $autoIncrement = 'AUTO_INCREMENT';
+        }
+
         $sql = <<<SQL
 CREATE TABLE fos_user (
-  id INT AUTO_INCREMENT NOT NULL,
+  id INT $autoIncrement NOT NULL,
   master_hit INT DEFAULT NULL,
   username VARCHAR(255) NOT NULL,
   username_canonical VARCHAR(255) NOT NULL,
@@ -46,7 +51,7 @@ SQL;
 
         $sql = <<<SQL
 CREATE TABLE refcode_hits (
-  id INT AUTO_INCREMENT NOT NULL,
+  id INT $autoIncrement NOT NULL,
   ref_code VARCHAR(255) NOT NULL,
   referrer VARCHAR(255) DEFAULT NULL,
   ip VARCHAR(255) DEFAULT NULL,
