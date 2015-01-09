@@ -9,25 +9,61 @@ class Version20150106000000 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
-        $this->addSql('ALTER TABLE fos_user ADD hit_id INT DEFAULT NULL, CHANGE master_hit referrer_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE fos_user ADD CONSTRAINT FK_957A6479798C22DB FOREIGN KEY (referrer_id) REFERENCES fos_user (id)');
-        $this->addSql('ALTER TABLE fos_user ADD CONSTRAINT FK_957A6479BC1A1241 FOREIGN KEY (hit_id) REFERENCES refcode_hits (id)');
-        $this->addSql('CREATE INDEX IDX_957A6479798C22DB ON fos_user (referrer_id)');
-        $this->addSql('CREATE INDEX IDX_957A6479BC1A1241 ON fos_user (hit_id)');
-        $this->addSql('ALTER TABLE refcode_hits ADD user_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE refcode_hits ADD CONSTRAINT FK_84B3850DA76ED395 FOREIGN KEY (user_id) REFERENCES fos_user (id)');
-        $this->addSql('CREATE INDEX IDX_84B3850DA76ED395 ON refcode_hits (user_id)');
+        $sql = <<<SQL
+CREATE TABLE fos_user (
+  id INT AUTO_INCREMENT NOT NULL,
+  master_hit INT DEFAULT NULL,
+  username VARCHAR(255) NOT NULL,
+  username_canonical VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  email_canonical VARCHAR(255) NOT NULL,
+  enabled TINYINT(1) NOT NULL,
+  salt VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  last_login DATETIME DEFAULT NULL,
+  locked TINYINT(1) NOT NULL,
+  expired TINYINT(1) NOT NULL,
+  expires_at DATETIME DEFAULT NULL,
+  confirmation_token VARCHAR(255) DEFAULT NULL,
+  password_requested_at DATETIME DEFAULT NULL,
+  roles LONGTEXT NOT NULL,
+  credentials_expired TINYINT(1) NOT NULL,
+  credentials_expire_at DATETIME DEFAULT NULL,
+  name_first VARCHAR(255) NOT NULL,
+  name_last VARCHAR(255) NOT NULL,
+  ref_code VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id) )
+SQL;
+
+        if ($this->connection->getDatabasePlatform()->getName() == 'mysql') {
+            $sql .= ' DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB';
+        }
+
+        $this->addSql($sql);
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_957A647992FC23A8 ON fos_user (username_canonical)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_957A6479A0D96FBF ON fos_user (email_canonical)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_957A64796066711F ON fos_user (ref_code)');
+
+        $sql = <<<SQL
+CREATE TABLE refcode_hits (
+  id INT AUTO_INCREMENT NOT NULL,
+  ref_code VARCHAR(255) NOT NULL,
+  referrer VARCHAR(255) DEFAULT NULL,
+  ip VARCHAR(255) DEFAULT NULL,
+  dt DATETIME NOT NULL,
+  PRIMARY KEY(id) )
+SQL;
+
+        if ($this->connection->getDatabasePlatform()->getName() == 'mysql') {
+            $sql .= ' DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB';
+        }
+
+        $this->addSql($sql);
     }
 
     public function down(Schema $schema)
     {
-        $this->addSql('ALTER TABLE fos_user DROP FOREIGN KEY FK_957A6479798C22DB');
-        $this->addSql('ALTER TABLE fos_user DROP FOREIGN KEY FK_957A6479BC1A1241');
-        $this->addSql('DROP INDEX IDX_957A6479798C22DB ON fos_user');
-        $this->addSql('DROP INDEX IDX_957A6479BC1A1241 ON fos_user');
-        $this->addSql('ALTER TABLE fos_user ADD master_hit INT DEFAULT NULL, DROP referrer_id, DROP hit_id');
-        $this->addSql('ALTER TABLE refcode_hits DROP FOREIGN KEY FK_84B3850DA76ED395');
-        $this->addSql('DROP INDEX IDX_84B3850DA76ED395 ON refcode_hits');
-        $this->addSql('ALTER TABLE refcode_hits DROP user_id');
+        $this->addSql('DROP TABLE refcode_hits');
+        $this->addSql('DROP TABLE fos_user');
     }
 }
