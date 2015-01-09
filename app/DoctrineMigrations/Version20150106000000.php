@@ -9,14 +9,11 @@ class Version20150106000000 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
-        $autoIncrement = '';
-        if ($this->connection->getDatabasePlatform()->getName() == 'mysql') {
-            $autoIncrement = 'AUTO_INCREMENT';
-        }
+        $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $sql = <<<SQL
+        $this->addSql('
 CREATE TABLE fos_user (
-  id INT $autoIncrement NOT NULL,
+  id INT AUTO_INCREMENT NOT NULL,
   master_hit INT DEFAULT NULL,
   username VARCHAR(255) NOT NULL,
   username_canonical VARCHAR(255) NOT NULL,
@@ -37,37 +34,26 @@ CREATE TABLE fos_user (
   name_first VARCHAR(255) NOT NULL,
   name_last VARCHAR(255) NOT NULL,
   ref_code VARCHAR(255) NOT NULL,
-  PRIMARY KEY(id) )
-SQL;
-
-        if ($this->connection->getDatabasePlatform()->getName() == 'mysql') {
-            $sql .= ' DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB';
-        }
-
-        $this->addSql($sql);
+  PRIMARY KEY(id)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_957A647992FC23A8 ON fos_user (username_canonical)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_957A6479A0D96FBF ON fos_user (email_canonical)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_957A64796066711F ON fos_user (ref_code)');
-
-        $sql = <<<SQL
+        $this->addSql('
 CREATE TABLE refcode_hits (
-  id INT $autoIncrement NOT NULL,
+  id INT AUTO_INCREMENT NOT NULL,
   ref_code VARCHAR(255) NOT NULL,
   referrer VARCHAR(255) DEFAULT NULL,
   ip VARCHAR(255) DEFAULT NULL,
   dt DATETIME NOT NULL,
-  PRIMARY KEY(id) )
-SQL;
-
-        if ($this->connection->getDatabasePlatform()->getName() == 'mysql') {
-            $sql .= ' DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB';
-        }
-
-        $this->addSql($sql);
+  PRIMARY KEY(id)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
     }
 
     public function down(Schema $schema)
     {
+        $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+
         $this->addSql('DROP TABLE refcode_hits');
         $this->addSql('DROP TABLE fos_user');
     }
